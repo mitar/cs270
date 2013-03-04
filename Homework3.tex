@@ -1,0 +1,192 @@
+\documentclass[a4paper,11pt,oneside,onecolumn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{cmap}
+\usepackage[T1]{fontenc}
+\usepackage{beton}
+\usepackage{eulervm}
+\renewcommand{\sfdefault}{\rmdefault}
+\usepackage[pdftex,colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows,automata,decorations.pathreplacing,decorations.text,decorations.markings,arrows,shapes,calc,fit}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[noend]{algpseudocode}
+
+\newcommand{\comment}[1]{%
+  \text{\phantom{(#1)}} \tag{#1}
+}
+
+\title{Homework 3}
+\author{Mitar Milutinovic (24090156)\thanks{Worked together with Shiry Ginosar, Valkyrie Savage, Orianna DeMasi, Christos-Alexandros Psomas.}}
+
+\renewcommand\thesection{\arabic{section}.}
+\renewcommand\thesubsection{\thesection (\alph{subsection})}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+
+\subsection{}
+
+Best expert, wrong half of the days: $L^* = \left\lfloor \frac{T}{2} \right\rfloor \le \frac{T}{2}$.
+There are two experts, $n=2$, multiplicative weight is $\epsilon=0.5$.
+
+\begin{align*}
+L & \le \frac{\log n}{\epsilon} + (1 + \epsilon) L^* \\
+ & \le \frac{\log n}{0.5} + (1 + 0.5) \frac{T}{2} \\
+ & = 2\log n + \frac{3T}{4} \\
+\end{align*}
+
+\subsection{}
+
+Upper bound for expected loss for multiplicative weight framework is $L \le \frac{\log n}{\epsilon} + (1 + \epsilon) L^*$.
+Using best expert loss $L^* = \left\lfloor \frac{T}{2} \right\rfloor \le \frac{T}{2}$ we get:
+
+\begin{align*}
+L & \le \frac{\log n}{\epsilon} + (1 + \epsilon) L^* \\
+ & \le \frac{\log n}{\epsilon} + (1 + \epsilon) \frac{T}{2} \\
+\end{align*}
+
+\section{}
+
+I used a modified version of the provided code and I understand it, it is straightforward. Using the game matrix:
+
+$$
+A = \left[\begin{array}{ccc}
+0 & 1 & -1 \\
+-1 & 0 & 1 \\
+1 & -1 & 0 \\
+0 & -1 & -1 \\
+\end{array}\right]
+$$
+
+Translated and scaled matrix:
+
+$$
+A' = \left[\begin{array}{ccc}
+0.5 & 1 & 0 \\
+0 & 0.5 & 1 \\
+1 & 0 & 0.5 \\
+0.5 & 0 & 0 \\
+\end{array}\right]
+$$
+
+For $T=10$, row's player strategy is:
+
+$$
+\left[\begin{array}{cccc}
+0.2527 & 0.3288 & 0.1658 & 0.2527 \\
+\end{array}\right]
+$$
+
+Column's player strategy is:
+
+$$
+\left[\begin{array}{ccc}
+0.7273 & 0.0909 & 0.1818 \\
+\end{array}\right]
+$$
+
+$\delta$-equilibrium:
+
+$$
+\delta = 0.2131
+$$
+
+For $T=100$, row's player strategy is:
+
+$$
+\left[\begin{array}{cccc}
+0.1731 & 0.3258 & 0.0046 & 0.4965 \\
+\end{array}\right]
+$$
+
+Column's player strategy is:
+
+$$
+\left[\begin{array}{ccc}
+0.6040 & 0.0990 & 0.2970 \\
+\end{array}\right]
+$$
+
+$\delta$-equilibrium:
+
+$$
+\delta = 0.0496
+$$
+
+For $T=139$, row's player strategy is:
+
+$$
+\left[\begin{array}{cccc}
+0.1592 & 0.3328 & 0.0007 & 0.5073 \\
+\end{array}\right]
+$$
+
+Column's player strategy is:
+
+$$
+\left[\begin{array}{ccc}
+0.6214 & 0.0786 & 0.3000 \\
+\end{array}\right]
+$$
+
+$\delta$-equilibrium:
+
+$$
+\delta = 0.0412
+$$
+
+\section{}
+
+We are using the same nomenclature as used when we showed a $1 + \epsilon$ approximate solution to the fractional path
+routing problem in $O(k^2m\frac{\log^2 m}{\epsilon^2})$ time using the experts framework. For
+$O(km\frac{\log^2 m}{\epsilon^2})$ time we change our algorithm so that each day we uniformly randomly chose only one
+pair $(s_i, t_i)$ and find new shortest path (for new tolls for that day) for that pair. Number of days we have to run the
+algorithm prolongs to $T \le \frac{8k \log k}{\epsilon ^2}$ to achieve the desired $1+\delta$ approximate solution, but we have to
+find only one shortest path each day instead of $k$, thus running time improves for a factor of $k$.
+Because we are routing only one path per day with just one unit of toll, total gain per day is $G_t \le 1$. Thus,
+both mean and variance is at most $1$ (and $k$). Based on lemma 1 each pair is routed $\frac{T}{k}(1 \pm \epsilon)$ times
+with probability at least $1 - \frac{1}{k}$. Over all days $G=C^*$, so $E[G_t] \approx \frac{C^*}{k}$. We can sum over all days to
+obtain $E[G] \le \frac{TC^*}{k} $.
+
+\begin{align*}
+G & \ge (1-\epsilon) G^* - \frac{\log n}{\epsilon} \\
+\comment{by lemma 2} \epsilon E(G) & \ge G - E[G] \\
+\epsilon E(G) \ge G - E[G] & \ge (1-\epsilon) G^* - \frac{\log n}{\epsilon} - E[G] \\
+\epsilon E(G) \ge (1 + \epsilon) E[G] & \ge (1-\epsilon) G^* - \frac{\log n}{\epsilon} \\
+\comment{$E[G] \le \frac{TC^*}{k} $} (1 + \epsilon) \frac{T C^*}{k} & \ge (1-\epsilon) G^* - \frac{\log n}{\epsilon} \\
+(1 + \epsilon) \frac{T C^*}{k} & \ge (1-\epsilon) \frac{TC_{max}}{k} - \frac{\log n}{\epsilon} \\
+(1 + \epsilon) T C^* & \ge (1-\epsilon) TC_{max} - \frac{k \log n}{\epsilon} \\
+\frac{k \log n}{\epsilon} & \ge (1-\epsilon) TC_{max} - (1 + \epsilon) T C^* \\
+\frac{k \log n}{\epsilon} & \ge T ( (1-\epsilon) C_{max} - (1 + \epsilon) C^* ) \\
+\comment{by lemma 1} \frac{k \log n}{\epsilon} & \ge \frac{8k \log n}{e^2} \left( (1-\epsilon) C_{max} - (1 + \epsilon) C^* \right) \\
+1 & \ge \frac{8}{e} \left( (1-\epsilon) C_{max} - (1 + \epsilon) C^* \right) \\
+\epsilon + 8 (1 + \epsilon) C^* & \ge 8 (1-\epsilon) C_{max} \\
+\frac{\epsilon + 8 (1 + \epsilon) C^*}{8 (1-\epsilon) } & \ge C_{max} \\
+\left( 1 + \frac{17 \epsilon }{8 (1-\epsilon) } \right) C^* & \ge C_{max} \\
+\end{align*}
+
+Thus:
+
+$$
+\delta = 1 + \frac{17 \epsilon }{8 (1-\epsilon) }
+$$
+
+\section{}
+
+\subsection{}
+
+Because adversary (for which we assume is capable of influencing the market and any other inputs the algorithm is getting)
+knows the deterministic algorithm and its logic, adversary can create conditions which make the player's
+deterministic algorithm decide to invest in the instrument. But in the moment that it invests, adversary can make the market
+yield zero dollars for that instrument. For example, where there is only one time interval ($T=1$) and two instruments ($n=2$), adversary can
+simply make deterministically chosen instrument to yield zero dollars and the other one, not chosen, $P$.
+
+\end{document}
