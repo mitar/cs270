@@ -1,0 +1,55 @@
+\documentclass[a4paper,11pt,oneside,onecolumn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{cmap}
+\usepackage[T1]{fontenc}
+\usepackage{beton}
+\usepackage{eulervm}
+\renewcommand{\sfdefault}{\rmdefault}
+\usepackage[pdftex,colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows,automata,decorations.pathreplacing,decorations.text,decorations.markings,arrows,shapes,calc,fit}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[noend]{algpseudocode}
+
+\newcommand{\comment}[1]{%
+  \text{\phantom{(#1)}} \tag{#1}
+}
+
+\title{Homework 4}
+\author{Mitar Milutinovic (24090156)\thanks{Worked together with Shiry Ginosar, Valkyrie Savage, Orianna DeMasi.}}
+
+\renewcommand\thesection{\arabic{section}.}
+\renewcommand\thesubsection{\thesection (\alph{subsection})}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+
+\section{}
+
+\section{}
+
+\section{}
+
+\section{}
+
+We designed a voting schema which allows a group of people to better decide on a common opinion about an issue. Currently,
+the most used approach is to simply count number of votes against and for, while not taking into account people who do
+not cast a vote. Our approach is to have each person define delegates whose votes will be counted when he/she does not
+vote him/herself. In this way we get a social network, a trust network, between users which can be
+used to transitively compute missing votes. We believe such a result better represents the will of the group.
+
+In the course of the project, we want to compare it with some other similar voting schemas with delegation. We want to visualize
+our approach and possibly find a way to visualize differences to other schemas. We will analyze the algorithm for computing the
+results according to our voting schema.
+
+On the project I will be working with Valkyrie Savage.
+
+\end{document}
