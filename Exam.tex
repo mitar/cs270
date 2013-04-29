@@ -1,0 +1,80 @@
+\documentclass[a4paper,11pt,oneside,onecolumn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{cmap}
+\usepackage[T1]{fontenc}
+\usepackage{beton}
+\usepackage{eulervm}
+\renewcommand{\sfdefault}{\rmdefault}
+\usepackage[pdftex,colorlinks,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows,automata,decorations.pathreplacing,decorations.text,decorations.markings,arrows,shapes,calc,fit}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{hhline}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[noend]{algpseudocode}
+
+\newcommand{\comment}[1]{%
+  \text{\phantom{(#1)}} \tag{#1}
+}
+
+\title{Exam}
+\author{Mitar Milutinovic (24090156)}
+
+\renewcommand\thesection{\arabic{section}.}
+\renewcommand\thesubsection{\thesection (\alph{subsection})}
+
+\begin{document}
+
+\maketitle
+
+\section{}
+
+a
+
+\section{}
+
+\begin{align*}
+\max 2x_{1,2} + 2x_{1,3} + 2x_{2,3} + 2x_{4,5} + 2x_{5,6} + 2x_{4,6} + x_{2,5} + x_{3,6} & \\
+x_{1,2} + x_{1,3} & \le 1 \\
+x_{1,2} + x_{2,3} + x_{2,5} & \le 1 \\
+x_{1,3} + x_{2,3} + x_{3,6} & \le 1 \\
+x_{4,5} + x_{4,6} & \le 1 \\
+x_{2,5} + x_{4,5} + x_{5,6} & \le 1 \\
+x_{3,6} + x_{4,6} + x_{5,6} & \le 1 \\
+x_{1,2} + x_{1,3} & \ge 1 \\
+x_{1,2} + x_{2,3} + x_{2,5} & \ge 1 \\
+x_{1,3} + x_{2,3} + x_{3,6} & \ge 1 \\
+x_{4,5} + x_{4,6} & \ge 1 \\
+x_{2,5} + x_{4,5} + x_{5,6} & \ge 1 \\
+x_{3,6} + x_{4,6} + x_{5,6} & \ge 1 \\
+x_{2,5} + x_{3,6} & \ge 1 \\
+x_{2,5} + x_{2,3} + x_{1,3} + x_{4,5} + x_{4,6} & \ge 1 \\
+x_{1,3} + x_{2,3} + x_{5,6} + x_{4,5} & \ge 1 \\
+x_{1,3} + x_{2,3} + x_{2,5} + x_{3,6} + x_{5,6} + x_{4,6} & \ge 1 \\
+x_{1,2} + x_{2,5} + x_{1,3} + x_{3,6} + x_{4,5} + x_{4,6} & \ge 1 \\
+x_{1,2} + x_{1,3} + x_{3,6} + x_{4,5} + x_{5,6} & \ge 1 \\
+x_{1,2} + x_{1,3} + x_{2,5} + x_{5,6} + x_{4,6} & \ge 1 \\
+x_{1,3} + x_{2,3} + x_{3,6} + x_{4,6} + x_{2,5} + x_{5,6} & \ge 1 \\
+x_{1,3} + x_{2,3} + x_{5,6} + x_{4,5} & \ge 1 \\
+x_{2,5} + x_{3,6} & \ge 1 \\
+x_{1,2} & \ge 0 \\
+x_{1,3} & \ge 0 \\
+x_{2,3} & \ge 0 \\
+x_{2,5} & \ge 0 \\
+x_{3,6} & \ge 0 \\
+x_{5,6} & \ge 0 \\
+x_{4,6} & \ge 0 \\
+x_{4,5} & \ge 0 \\
+\end{align*}
+
+Solution for primal, maximum weight matching, is $5$, edges: $(v_1, v_3)$, $(v_2, v_5)$, $(v_4, v_6)$. Solution for dual, vertex
+cover, is $6$, $\forall v \in V: p(v) = 1$.
+
+\section{}
+
+We run the perceptron algorithm 
+
+\end{document}
