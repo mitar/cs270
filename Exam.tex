@@ -22,6 +22,7 @@
 
 \title{Exam}
 \author{Mitar Milutinovic (24090156)}
+\date{}
 
 \renewcommand\thesection{\arabic{section}.}
 \renewcommand\thesubsection{\thesection (\alph{subsection})}
@@ -156,6 +157,57 @@ So the normal is average/sum of all points for positive label and opposite (nega
 \section{}
 
 \section{}
+
+\subsection{}
+
+$$
+T = O(X)
+$$
+
+$$
+\mu = \tilde\Omega(X)
+$$
+
+\subsection{}
+
+$$
+T = \Omega(X)
+$$
+
+$$
+\mu = \tilde O(X)
+$$
+
+\subsection{}
+
+$$
+\mu = \tilde\Omega\left(\frac{h(G)^2}{2}\right) = \tilde\Omega\left(h(G)^2\right)
+$$
+
+\subsection{}
+
+$$
+\mu = \tilde O\left(2 h(G) \right) = \tilde O\left( h(G) \right)
+$$
+
+\subsection{}
+
+\subsubsection{}
+
+$$
+h(S) = \frac{|E(S,V-S)|}{n \min\left(|S|,|V-S|\right)} = \frac{k(n-k)}{nk} = \frac{n-k}{n}
+$$
+where $k = |S|$ and $|S| \le \frac{|V|}{2}$.
+
+$$
+h(G) = \min_{S\subseteq V} h(S) = \frac{\frac{n}{2}}{n} = \frac{1}{2}
+$$
+
+$$
+\mu = O\left(2 h(G) \right) = O \left(1\right)
+$$
+
+This also agrees with intuition that because a clique is highly connected, $\mu$ should be close to 1.
 
 \section{}
 
