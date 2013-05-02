@@ -211,6 +211,25 @@ This also agrees with intuition that because a clique is highly connected, $\mu$
 
 \section{}
 
+\subsection{}
+
+$0$, because rows cancel each other out, on average, because we are multiplying each row by $+1$ and $-1$ with equal probability.
+
+\subsection{}
+
+$\frac{d}{k}$, because signal $d$ is lost among $k$ other rows.
+
+\subsection{}
+
+Probably it is assumed non-diagonal entries, because diagonal entries have a value of $d$, squared $d^2$.
+
+\subsection{}
+
+\subsection{}
+
+We can compute $\tilde A$ and $\tilde A \tilde A^T$ as described and sort in increasing order all non-diagonal entries by their absolute value into list $L$. For each entry we know corresponding rows from $A$ involved in its computation. For each row from $A$ we add to its counter variable corresponding entry's position in $L$. We repeat this for multiple random partitions of $A$. We output two rows with
+highest count in their counter variables.
+
 \section{}
 
 Multicommodity flow on instance on $G$ with demand graph $K_{|V|}$ routes one unit of flow between each pair of vertices in $G$.
