@@ -143,7 +143,7 @@ True. Negation of complementary slackness.
 
 \subsubsection{}
 
-Not true. I believe condition for primal is missing.
+Not true. We believe condition for primal is missing.
 
 \subsection{}
 
@@ -212,5 +212,29 @@ This also agrees with intuition that because a clique is highly connected, $\mu$
 \section{}
 
 \section{}
+
+Multicommodity flow on instance on $G$ with demand graph $K_{|V|}$ routes one unit of flow between each pair of vertices in $G$.
+
+$\alpha$, the maximum congestion of any edge has a corresponding edge $e_\alpha$. Congestion on this edge is $0 < \alpha \le n$, where $n = |V|$. $\phi(G)$ has
+a corresponding cut with with minimum sparsity $\phi(G) = \frac{|E(C,\bar C)|}{|C||\bar C|}$. Without the loss in generality we can assume $|C| \le |\bar C|$. We want to show that $f(\alpha) \le \phi(G)$. This is trivial because $\phi(G)$ is non-negative and by setting $f(\alpha)$ to a constant function $0$ we have a lower bound.
+
+To improve this lower bound we observe that $e_\alpha \in E(C,\bar C)$. Multicommodity flow routes $|C||\bar C|$ units of flow between all nodes in $C$ and all nodes in $\bar C$ over edges in $E(C,\bar C)$. If $|E(C,\bar C)| = 1$ then $E(C,\bar C) = \{e_\alpha\} $ and $\alpha = |C||\bar C|$ and $\frac{1}{\alpha} = \frac{1}{|C||\bar C|} \le \frac{|E(C,\bar C)|}{|C||\bar C|} = \frac{1}{|C||\bar C|}$. Otherwise, all flow between $C$ and $\bar C$ goes over multiple edges in $E(C,\bar C)$ and for that there are two extremes: all flow goes still over one edge and all flow is equally distributed over all edges:
+
+$$
+\frac{|C||\bar C|}{|E(C,\bar C)|} \le \alpha \le |C||\bar C|
+$$
+
+We plug this into $\frac{1}{\alpha}$ and get:
+
+$$
+\frac{1}{|C||\bar C|} \le \frac{|E(C,\bar C)|}{|C||\bar C|}
+$$
+and:
+$$
+\frac{|E(C,\bar C)|}{|C||\bar C|} \le \frac{|E(C,\bar C)|}{|C||\bar C|}
+$$
+
+By that we have shown that $\frac{1}{\alpha}$ is a better lower bound
+for sparsity of the graph.
 
 \end{document}
